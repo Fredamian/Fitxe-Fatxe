@@ -1,4 +1,4 @@
-# Fitxe Fatch with JavaScript
+# Fred Fitxe Fatch with JavaScript
 
 ## Intro
 This project is a simple implementation of the classic Fitxe Fatch game only using HTML, CSS, JavaScript and Tailwind. The goal is to align three simbols (X or O) in the 3x3 grid. The project was developed to practice JavaScript programming skills and DOM manipulation, and it serves as a good introduction to basic game development with JavaScript.
