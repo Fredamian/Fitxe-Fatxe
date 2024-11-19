@@ -11,6 +11,9 @@ Clone this repository:
 To initialize the project you must access the `vite-project`folder
 ### `cd vite-project`
 
+### `npm install`
+To install all needed packages
+
 ## In the project directory, you can run:
 
 ### `npm run dev`
