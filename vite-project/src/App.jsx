@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import DisplayPlayers from './DisplayPlayers'
 import './App.css'
-//import './imgs/game-logo.png'
+import './imgs/game-logo.png'
 import './imgs/ex.png'
 import './imgs/ou.png'
 
 import WIN from './WIN'
-
 
 //contador que dira qual a vez de cada um no momento
 let cont = 0;
@@ -16,7 +15,6 @@ var fatxeX = Array(4).fill();
 
 let ganhar = false;
 
-var newMudar = [];
 
 var ganhou = 0;
 function App() {
@@ -48,22 +46,22 @@ function App() {
 
  // criar funcao para dizer qual botao foi clicado
 function handleClick(index) {
-  newMudar = [...mudar];  // deixar array com a primeira versao
-  if(preenchido(newMudar)){//verficar se newMudar ja se encontra cheio
+  
+  const newMudar = [...mudar];  // deixar array com a primeira versao
+ 
+  if(preenchido(mudar)){//verficar se newMudar ja se encontra cheio
       //jog1 = 0 =  X      jog2 = 1 = O
     if (newMudar[index] == "" && cont == 0) {
-      newMudar[index] = x;  // se a pos estiver vazi, coloca x
+      newMudar[index] = x;  // se a pos estiver vazia, coloca X
       cont = 1;  
     }
     if (newMudar[index] == "" && cont == 1) {
       newMudar[index] = o;  
       cont = 0;
     }
-    //console.log(newMudar)
-    //console.log(mudar)
-    let rec = receber(newMudar,mudar)
-    //console.log(rec)
+    receber(newMudar,mudar)
     setMudar(newMudar);  // final 
+
     // Uso para verificar a vitória do jogador X
     if (vencedor(fatxeX, fitxeX)) {
       console.log("Jogador X venceu!");
@@ -78,7 +76,7 @@ function handleClick(index) {
     }
   }
   else{
-    window.alert(1);
+    window.alert(1)
   }
 }
 
@@ -92,26 +90,27 @@ function vencedor(fatxe, fitxe) {
 // e entao colocar esta posicao dentro de um array
 function receber (array1, array2){
     for(let i = 0 ; i <= 8 ; i++){
+      
       if(array1[i] == array2[i]){
       } 
+      
       else{ 
         if(array1[i] == x){
           //implementar aqui para mudar o valor do prox elemento que sera mudado
           //let mud1 = i+1
           console.log("era um X na posicao "+i)
           fatxeX.push(i)
-          console.log("fatxe "+ [fatxeX]);
         }
+      
         else{
           //let mud2 = i+1
           console.log("era um O na posicao "+i);
           fatxeO.push(i)
-          console.log("fatxe "+[fatxeO]);
         }
-        //console.log("mudou " + i); 
       }
     }
 }
+
 //funcao para ver se array mudar ja esta preenchido
 function preenchido(array){
   for(let i = 0; i<=8; i++){
@@ -121,18 +120,13 @@ function preenchido(array){
   }
 }
 
-
 function tentNov (){
-  setMudar(Array(9).fill(null));
-  newMudar = Array(9).fill(null);
-  console.log(mudar + newMudar);
-  ganhar = false;
-  
+  location.reload(true);
 }
 
   return (
   <div>
-    <h2>Este é o jogo de Fitxe Fatxe</h2>
+    <h2>FITXE FATXE</h2>
     <div className="mainBox">
    {ganhar ==false && <DisplayPlayers alternar={cont}/>}
    {ganhar==false && <div className="btnEscolha"> 
@@ -146,11 +140,9 @@ function tentNov (){
     <span onClick={() => handleClick(7)} className='esclhas'><img src={mudar[7] || ""}  /></span>
     <span onClick={() => handleClick(8)} className='esclhas'><img src={mudar[8] || ""}  /></span>
     </div> }
-    {ganhar && <WIN ganhou = {ganhou} tentNov = {tentNov}/>}
+    {ganhar && <WIN ganhou = {ganhou} tentNov = {tentNov} />}
    </div>  
    </div>
   );
 }
-//{cont=1 && (<p>GANHOOUUUUUUU</p>)}
-
 export default App;
